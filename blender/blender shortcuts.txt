@@ -1,0 +1,33 @@
+NEW INSTALL
+
+defaults: spacebar -> search
+addons: textools (instalar) mesh looptools (activar) node wrangler (activar)
+
+
+NAVIGATION
+
+n - abre la ventana de transformación del objeto seleccionado
+t - muestra u oculta la barra de herramientas
+pulsar rueda raton + arrastrar - girar vista
+maysc + pulsar rueda raton - mover vista sin girar
+mover rueda raton - zoom
+num 5 - cambia entre vista ortográfica (vista aplanada del objeto) y vista en perspectiva
+num 1 - vista ortografica frontal
+num 3 - vista lado derecho
+num 7 - vista desde arriba
+ctrl + num 1 - vista desde atras
+ctrl + num 3 - vista desde lado izquierdo
+ctrl + num 7 - vista desde abajo
+h - ocultar objeto seleccionado
+alt h - desocultar todos los objetos ocultos
+g - mover objeto (+ x, y, z para mover solo en ese eje) (+ shift x,y,z para mover por los dos ejes no seleccionados) 
+s - escalar objeto (+ x, y, z para escalar solo ese eje) (+ shift x,y,z para escalar los dos ejes no seleccionados)
+r - rotate objeto (+ x, y, z para rotar por ese eje) (+ shift x,y,z para rotar por los dos ejes no seleccionados)
+mientras se transforma, click izquierdo para confirmar, click derecho para cancelar
+mientras se transforma si pulsamos x, y o z dos veces en lugar de una, hara la transformación en el espacio local(relativo a la orientacion del objeto) en lugar del espacio global.
+alt + transform key - elimina los cambios hechos al objeto y lo reinicia en base al espacio global
+
+ctrl + z - deshacer
+ctrl + shift + z - rehacer
+
+shift + a - abrir menu de añadir objeto

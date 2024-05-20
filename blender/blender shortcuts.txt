@@ -31,3 +31,19 @@ ctrl + z - deshacer
 ctrl + shift + z - rehacer
 
 shift + a - abrir menu de añadir objeto
+
+shift + right click - mover el cursor 3d (donde se originan nuevos objetos)
+
+shift + c - devolver el cursor 3d al origen del mundo (0,0,0) y mueve la vista a dicho origen
+
+shift + d - duplica el objeto seleccionado
+
+f2 - renombrar el objeto seleccionado (o el ultimo que estuvo seleccionado)
+
+supr - elimina el objeto seleccionado
+
+x - elimina el objeto seleccionado con dialogo de confirmacion
+
+shift + click izquierdo - seleccionar algo sin perder la seleccion anterior
+
+select multiple + ctrñ + j - unir los objetos seleccionados

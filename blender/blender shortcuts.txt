@@ -46,4 +46,26 @@ x - elimina el objeto seleccionado con dialogo de confirmacion
 
 shift + click izquierdo - seleccionar algo sin perder la seleccion anterior
 
-select multiple + ctrñ + j - unir los objetos seleccionados
+select multiple + ctrl + j - unir los objetos seleccionados
+
+z - abre el menu de modos de shading
+
+tab - cambiar entre edit mode y object mode
+
+w - cambia entre los distintos modos de seleccion
+
+EDIT MODE
+
+1 - select vertices
+2 - select lines
+3 - select faces
+
+alt + click - loop select, selecciona todos los vertices/lines/faces conectados horizontalmente o verticalmente al nodo seleccionado
+
+select node y luego ctrl + click en otro nodo - shortest path selection, selecciona el camino mas corto de nodos necesario para llegar al primer nodo
+
+o - togglear edicion proporcional
+
+a - seleccionar todos los nodos del objeto editado
+
+shift + s - abrir menu de ajuste (snapping menu)

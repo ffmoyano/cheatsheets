@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,12pt]{article}
 % *** IDIOMA ***
 \usepackage[spanish, es-nodecimaldot]{babel}
 \usepackage[utf8]{inputenc}
@@ -18,7 +18,8 @@
 %  *** COLOR ***
 
 \usepackage[table]{xcolor}
-\definecolor{blue}{RGB}{51,102,204}
+\definecolor{azul}{RGB}{0,89,140}
+\definecolor{alizarin}{rgb}{0.82,0.1,0.26}
 \definecolor{gray}{RGB}{242,242,242}
 
 % *** FIGURAS ***
@@ -29,14 +30,14 @@
 \usepackage{float} % permite usar posicion H
 \usepackage{ wrapfig }
 \usepackage{overpic}
-
+\usepackage{tikz}
 % *** TABLAS ***
 \usepackage{booktabs} % varios tipos de linea
 \usepackage{colortbl} % varios colores
 
 % *** REFERENCIAS ***
 \usepackage{hyperref}
-\hypersetup{colorlinks=true, linkcolor=blue}
+\hypersetup{colorlinks=true, linkcolor=azul}
 
 % *** ECUACIONES ***
 \usepackage{mathtools}
@@ -55,15 +56,24 @@
 \pagestyle{fancy}
 
 \renewcommand{\headrulewidth}{0.5pt} % grosor linea titulo
+\let\oldheadrule\headrule
+\renewcommand{\headrule}{\color{azul}\oldheadrule}
 \renewcommand{\footrulewidth}{0.5pt} % grosor linea pie
+\let\oldfootrule\footrule
+\renewcommand{\footrule}{\color{azul}\oldfootrule}
 % Pie de pagina
+\lfoot{\textcolor{black}{\small \titulo}}
 \lfoot{\small \titulo} % left foot
 \cfoot{}  % centro pie vacio
-\rfoot{\small Pág. \thepage\ de \pageref{LastPage}} % derecha pie
+\rfoot{\textcolor{black}{\small Pág. \thepage\ de \pageref{LastPage}}} % derecha pie
 % Encabezado
-\lhead{PIXEL}
+\lhead{\includegraphics[width=0.15\textwidth]{Figuras/logo.png}}
 \chead{\autor}
 \rhead{\DTMsetstyle{ddmmyyyy}\fecha}
+
+\usepackage{titlesec} % editar sectiion
+\titleformat{\section}{\color{azul}\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\color{azul}\normalfont\large\bfseries}{\thesubsection}{1em}{}
 
 
 \begin{document}
@@ -71,224 +81,317 @@
 	\newcommand{\titulo}{Título importante y poderoso}
 	\newcommand{\autor}{Chuck Norris}
 	%comentario
-	
-	\begin{center}
-		{\color{blue} \LARGE  \textbf{\titulo}} \vspace{1cm} %vertical space
-
-		{\Large \textit{Mi proyecto pro en LaTeX}} \\[0.5 cm]  % vspace abreviado
-
-		\underline{\autor } % horizontal space
+	%Renuevo comand
+	\renewcommand{\contentsname}{Contenido}
+	\renewcommand{\tablename}{\bfseries Tabla}
+	\renewcommand{\figurename}{\bfseries Figura }
+	\begin{titlepage}
+		\thispagestyle{empty} % desaparece encabezado y pie de pagina
+		\begin{tikzpicture}[remember picture, overlay]
+			\node[inner sep = 0pt] at (current page.center) {\includegraphics[width=21cm]{../Latex/Figuras/cover.pdf}};
+		\end{tikzpicture}
 		\begin{flushright}
-			\fecha
+			{\fontsize{40}{50}\selectfont \titulo}
 		\end{flushright}
-	\end{center}
+			 \vspace{1cm} %vertical space
+			\begin{flushright}
+			{\Large \textit{Mi proyecto pro en LaTeX}} \\[0.5 cm]  % vspace abreviado
+	
+			\underline{\autor } % horizontal space
+				\end{flushright}
+			\begin{flushright}
+				\fecha
+			\end{flushright}
+	
+	\end{titlepage}
+	
+	
 	
 	Nueva linea \newline
-\indent	Indentación
-
-\tableofcontents
-\clearpage % salto de pagina
-
-\section{Introducción}
-\subsection{Primer tema}
-
-\noindent Una mañana, tras un sueño intranquilo, Gregorio Samsa se despertó convertido en un monstruoso insecto. Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo.
-Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto. - ¿Qué me ha ocurrido? No estaba soñando. Su habitación, una habitación normal, aunque muy pequeña, tenía el aspecto habitual.
-
-
-\textbackslash 100\% 100 \$ 100 \# 100 \& \{hola\} hola\_2
-
-
-% lista con viñeta
-\begin{itemize}
-	\item primer item
-	\item segundo item
-	\item tercer item
-	% sublista
+	\indent	Indentación
+	
+	\tableofcontents
+	\clearpage % salto de pagina
+	
+	\section{Introducción}
+	\subsection{Primer tema}
+	
+	\noindent Una mañana, tras un sueño intranquilo, Gregorio Samsa se despertó convertido en un monstruoso insecto. Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo.
+	Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto. - ¿Qué me ha ocurrido? No estaba soñando. Su habitación, una habitación normal, aunque muy pequeña, tenía el aspecto habitual.
+	
+	
+	\textbackslash 100\% 100 \$ 100 \# 100 \& \{hola\} hola\_2
+	
+	
+	% lista con viñeta
 	\begin{itemize}
-		\item primer subitem
-		\item segundo subitem
+		\item primer item
+		\item segundo item
+		\item tercer item
+		% sublista
+		\begin{itemize}
+			\item primer subitem
+			\item segundo subitem
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
-
-% lista numerada
-\begin{enumerate}
-	\item primer item
-	\item segundo item
-	\item tercer item
+	
+	% lista numerada
 	\begin{enumerate}
-		\item primer subitem
-		\item segundo subitem
+		\item primer item
+		\item segundo item
+		\item tercer item
+		\begin{enumerate}
+			\item primer subitem
+			\item segundo subitem
 		\end{enumerate}
-\end{enumerate}
-
-% lista con tag
-\begin{description}
-	\item[primero] primer item
-	\item[segundo] segundp item
-	\item[tercero] tercer item
-\end{description}
-
-\subsection{Segundo tema} % si no queremos numerado ponemos un * subsection*{}
-Segundo tema
-Sobre la mesa había desparramado un muestrario de paños - Samsa era viajante de comercio-, y de la pared colgaba una estampa recientemente recortada de una revista ilus trada y puesta en un marco dorado. La estampa mostraba a una mujer tocada con un gorro de pieles, envuelta en una estola también de pieles, y que, muy erguida, esgrimía un amplio manguito, asimismo de piel, que ocultaba todo su antebrazo.
-
-
-\subsection{Antecedentes}
-Gregorio miró hacia la ventana; estaba nublado, y sobre el cinc del alféizar repiqueteaban las gotas de lluvia, lo que le hizo sentir una gran melancolía. «Bueno -pensó-; ¿y si siguiese durmiendo un rato y me olvidase de todas estas locuras? » Pero no era posible, pues Gregorio tenía la costumbre de dormir sobre el lado derecho, y su actual estado no le permitía adoptar tal postura.
-
-Variable Sintió en el vientre una ligera picazón. Lentamente, se estiró sobre la espalda en dirección a la cabecera de la cama, para poder alzar mejor la cabeza.
-Aleatoria Vio que el sitio que le picaba estaba cubierto de extraños untitos blancos. Intentó rascarse con una pata; pero tuvo que retirarla inmediatamente, pues el roce le producía escalofríos.
-
-Por más que se esforzara volvía a quedar de espaldas. Intentó en vano esta operación numerosas veces; cerró los ojos para no tener que ver aquella confusa agitación de patas, que no cesó hasta que notó en el costado un dolor leve y punzante, un dolor jamás sentido hasta entonces. - ¡Qué cansada es la profesión que he elegido! -se dijo-. Siempre de viaje.
-
-\section{Metodología}
-\subsection{Figuras}
-Las preocupaciones son mucho mayores cuando se trabaja fuera, por no hablar de las molestias propias de los viajes: estar pendiente de los enlaces de los trenes; la comida mala, irregular; relaciones que cambian constantemente, que nunca llegan a ser verdaderamente cordiales, y en las que no tienen cabida los sentimientos. ¡Al diablo con todo!
-
-Se puede ver en más detalle en la \autoref{fig:flujo}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\linewidth]{../Documents/Figuras/flujo}
-	\caption{Imagen inicial de la propuesta de cliente.}
-	\label{fig:flujo}
-\end{figure}
-
-Una mañana, tras un sueño intranquilo, Gregorio Samsa se despertó convertido en un monstruoso insecto. Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo.
-Sobre la mesa había desparramado un muestrario de paños - Samsa era viajante de comercio-, y de la pared colgaba una estampa recientemente recortada de una revista ilustrada y puesta en un marco dorado. La estampa mostraba a una mujer tocada con un gorro de pieles, envuelta en una estola también de pieles, y que, muy erguida, esgrimía un amplio manguito, asimismo de piel, que ocultaba todo su antebrazo.
-
-\begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.45\textwidth}
+	\end{enumerate}
+	
+	% lista con tag
+	\begin{description}
+		\item[primero] primer item
+		\item[segundo] segundp item
+		\item[tercero] tercer item
+	\end{description}
+	
+	\subsection{Segundo tema} % si no queremos numerado ponemos un * subsection*{}
+	Segundo tema
+	Sobre la mesa había desparramado un muestrario de paños - Samsa era viajante de comercio-, y de la pared colgaba una estampa recientemente recortada de una revista ilus trada y puesta en un marco dorado. La estampa mostraba a una mujer tocada con un gorro de pieles, envuelta en una estola también de pieles, y que, muy erguida, esgrimía un amplio manguito, asimismo de piel, que ocultaba todo su antebrazo.
+	
+	
+	\subsection{Antecedentes}
+	Gregorio miró hacia la ventana; estaba nublado, y sobre el cinc del alféizar repiqueteaban las gotas de lluvia, lo que le hizo sentir una gran melancolía. «Bueno -pensó-; ¿y si siguiese durmiendo un rato y me olvidase de todas estas locuras? » Pero no era posible, pues Gregorio tenía la costumbre de dormir sobre el lado derecho, y su actual estado no le permitía adoptar tal postura.
+	
+	Variable Sintió en el vientre una ligera picazón. Lentamente, se estiró sobre la espalda en dirección a la cabecera de la cama, para poder alzar mejor la cabeza.
+	Aleatoria Vio que el sitio que le picaba estaba cubierto de extraños untitos blancos. Intentó rascarse con una pata; pero tuvo que retirarla inmediatamente, pues el roce le producía escalofríos.
+	
+	Por más que se esforzara volvía a quedar de espaldas. Intentó en vano esta operación numerosas veces; cerró los ojos para no tener que ver aquella confusa agitación de patas, que no cesó hasta que notó en el costado un dolor leve y punzante, un dolor jamás sentido hasta entonces. - ¡Qué cansada es la profesión que he elegido! -se dijo-. Siempre de viaje.
+	
+	\section{Metodología}
+	\subsection{Figuras}
+	Las preocupaciones son mucho mayores cuando se trabaja fuera, por no hablar de las molestias propias de los viajes: estar pendiente de los enlaces de los trenes; la comida mala, irregular; relaciones que cambian constantemente, que nunca llegan a ser verdaderamente cordiales, y en las que no tienen cabida los sentimientos. ¡Al diablo con todo!
+	
+	Se puede ver en más detalle en la \autoref{fig:flujo}
+	
+	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1.7in]{../Documents/Figuras/grafica_barras}
-		\caption{}
-		\label{fig:graficabarras}
-	\end{subfigure}
-	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=0.6\linewidth]{../Latex/Figuras/flujo.png}
+		\caption{Imagen inicial de la propuesta de cliente.}
+		\label{fig:flujo}
+	\end{figure}
+	
+	Una mañana, tras un sueño intranquilo, Gregorio Samsa se despertó convertido en un monstruoso insecto. Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo.
+	Sobre la mesa había desparramado un muestrario de paños - Samsa era viajante de comercio-, y de la pared colgaba una estampa recientemente recortada de una revista ilustrada y puesta en un marco dorado. La estampa mostraba a una mujer tocada con un gorro de pieles, envuelta en una estola también de pieles, y que, muy erguida, esgrimía un amplio manguito, asimismo de piel, que ocultaba todo su antebrazo.
+	
+	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1.7in]{../Documents/Figuras/grafica_torta.png}
-		\caption{}
-		\label{fig:graficatorta}
-	\end{subfigure}
-	\caption{dos imagenes juntas}
-\end{figure}
-\newpage
-\subsubsection{Descripción del equipo}
-% 9: cantidad de lineas de texto recortadas
-% l: figura a la izquierda
-% 3\linewidth: ancho de la figura
-\begin{wrapfigure}[9]{l}{0.3\linewidth}
-	\includegraphics[width=0.9\linewidth]{../Documents/Figuras/tex_lion}
-\end{wrapfigure}
-
-El león de TeX
-Gregorio miró hacia la ventana; estaba nublado, y sobre el cinc del alféizar repiqueteaban las gotas de lluvia, lo que le hizo sentir una gran melancolía. «Bueno -pensó-; ¿y si siguiese durmiendo un rato y me olvidase de todas estas locuras? » Pero no era posible, pues Gregorio tenía la costumbre de dormir sobre el lado derecho, y su actual estado no le permitía adoptar tal postura.
-Por más que se esforzara volvía a quedar de espaldas. Intentó en vano esta operación numerosas veces; cerró los ojos para no tener que ver aquella confusa agitación de patas, que no cesó hasta que notó en el costado un dolor leve y punzante, un dolor jamás sentido hasta entonces. - ¡Qué cansada es la profesión que he elegido! -se dijo-. Siempre de viaje.
-Gráfico importante
-
-\subsubsection{Grafico importante}
-
-\begin{figure}[h]
-	\centering
-	\begin{overpic}[width=0.6\linewidth, tics=5, grid]{../Documents/Figuras/plot}
-		\put (0,0) {5} % pos xy 0,0 put a 5
-	\end{overpic}
-
-	\caption{Un grafico importante}
-	\label{fig:plot}
-\end{figure}
-
-
-\subsection{Tablas}
-Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto. - ¿Qué me ha ocurrido? No estaba soñando. Su habitación, una habitación normal, aunque muy pequeña, tenía el aspecto habitual.
-
-\begin{tabular}{|c|l|r|c|} % c: center; l: left; r:right
-	\hline
-	& 1 & 2 & 3 \\
-	\hline
-	A & hola & hola & hola \\
-	\hline
-	B &  &  &  \\
-	\hline
-\end{tabular}
-
-
-Podemos hacer una tabla con un poco más de estilo, con ecuaciones dentro y que se adapte el texto. Para el Estado Límite de Servicio, los coeficientes parciales de seguridad a adoptar son los indicados en la Tabla \ref{tab:coeficientes}
-
-\begin{table}[h]
-	\centering
-	\caption{Coeficientes parciales de seguridad en ELS}
-	\rowcolors{1}{white}{gray}
-\begin{tabular}{p{4cm}cc} % parrafo de maximo 4 cm o newline
-	\toprule
-	\textbf{Tipo de acción} & \textbf{Efecto favorable} & \textbf{Efecto desfavorable} \\
-	\midrule
-	Permanente & gG=1 & gg=1 \\
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1.7in]{../Latex/Figuras/grafica_barras}
+			\caption{}
+			\label{fig:graficabarras}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\includegraphics[width=1.7in]{../Latex/Figuras/grafica_torta.png}
+			\caption{}
+			\label{fig:graficatorta}
+		\end{subfigure}
+		\caption{dos imagenes juntas}
+	\end{figure}
+	\newpage
+	\subsubsection{Descripción del equipo}
+	% 9: cantidad de lineas de texto recortadas
+	% l: figura a la izquierda
+	% 3\linewidth: ancho de la figura
+	\begin{wrapfigure}[9]{l}{0.3\linewidth}
+		\includegraphics[width=0.9\linewidth]{../Latex/Figuras/tex_lion}
+	\end{wrapfigure}
 	
-	Pretensado & 1.10 & 0.90 \\
+	El león de TeX
+	Gregorio miró hacia la ventana; estaba nublado, y sobre el cinc del alféizar repiqueteaban las gotas de lluvia, lo que le hizo sentir una gran melancolía. «Bueno -pensó-; ¿y si siguiese durmiendo un rato y me olvidase de todas estas locuras? » Pero no era posible, pues Gregorio tenía la costumbre de dormir sobre el lado derecho, y su actual estado no le permitía adoptar tal postura.
+	Por más que se esforzara volvía a quedar de espaldas. Intentó en vano esta operación numerosas veces; cerró los ojos para no tener que ver aquella confusa agitación de patas, que no cesó hasta que notó en el costado un dolor leve y punzante, un dolor jamás sentido hasta entonces. - ¡Qué cansada es la profesión que he elegido! -se dijo-. Siempre de viaje.
+	Gráfico importante
 	
-	Permanente de valor no constante & 1 & 1 \\
+	\subsubsection{Grafico importante}
 	
-	Variable & 1 & 0 \\
-	\bottomrule
-\end{tabular}
-\label{tab:coeficientes}
-\end{table}
-Sintió en el vientre una ligera picazón. Lentamente, se estiró sobre la espalda en dirección a la cabecera de la cama, para poder alzar mejor la cabeza. Vio que el sitio que le picaba estaba cubierto de extraños untitos blancos. Intentó rascarse con una pata; pero tuvo que retirarla inmediatamente, pues el roce le producía escalofríos.
-El cronograma preliminar se presenta en la Tabla 2
-
-\section{Minipáginas}
-
-\begin{center}
-	\begin{minipage}{0.45\linewidth}
-		\includegraphics[width=1\linewidth]{example-image-a}
-	\end{minipage}
-	\begin{minipage}{0.45\linewidth}
-		\includegraphics[width=1\linewidth]{example-image-b}
-	\end{minipage}
-\end{center}
-\begin{center}
-	\begin{minipage}{0.45\linewidth}
-		\includegraphics[width=1\linewidth]{example-image-c}
-	\end{minipage}
-	\begin{minipage}{0.45\linewidth}
-		Una mañana, tras un sueño intranquilo, Gregorio Samsa se despertó convertido en un monstruoso insecto. Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo.
-		Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto. - ¿Qué me ha ocurrido? 
-	\end{minipage}
-\end{center}
-
-\section{Ecuaciones}
-
-La ecuación $ E = m \cdot c^2 $.
-Tenemos $ f_{yk} $ o sino $ x_{a}^{2} $
-También tenemos $ \frac{2}{4} $ o sino $ \dfrac{3}{4} $
-o la raíz $ \sqrt {2} $
-
-$$ E = m \cdot c^2 $$ % con doble $ la estamos poniendo en una nueva linea la ecuacion
-
-Como vimos en la ecuación \ref{eq:energia}. La \autoref{eq:energia} o sino la ecuación \eqref{eq:energia}
-
-\begin{equation} \label{eq:energia} % ecuacion numerada
-	E= m \cdot c^2
-\end{equation}
-
-Otra opción es una ecuación sin numerar pero dentro del entorno de ecuaciones
-
-\begin{equation*} % ecuacion sin numerar
-	E= m \cdot c^2
-\end{equation*}
-
-\section{Conclusiones}
-Las preocupaciones son mucho mayores cuando se trabaja fuera, por no hablar de las molestias propias de los viajes: estar pendiente de los enlaces de los trenes; la comida mala, irregular; relaciones que cambian constantemente, que nunca llegan a ser verdaderamente cordiales, y en las que no tienen cabida los sentimientos. ¡Al diablo con todo!. Como dijo Argosy Medical Animation, 2007.
-Una mañana, tras un sueño intranquilo, Gregorio Samsa se despertó convertido en un monstruoso insecto. Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo. También lo dijo (Hegna \& Langmyhr, 2019; Iesan, 1996; Kime \& Charette, 2015)
-
-Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto. - ¿Qué me ha ocurrido? No estaba soñando. Su habitación, una habitación normal, aunque muy pequeña, tenía el aspecto habitual.Y esto lo dijo Adelstein y Kuguel (2011).
-Sobre la mesa había desparramado un muestrario de paños - Samsa era viajante de comercio-, y de la pared colgaba una estampa recientemente recortada de una revista ilus trada y puesta en un marco dorado. La estampa mostraba a una mujer tocada con un gorro de pieles, envuelta en una estola también de pieles, y que, muy erguida, esgrimía un amplio manguito, asimismo de piel, que ocultaba todo su antebrazo.
-Gregorio miró hacia la ventana; estaba nublado, y sobre el cinc del alféizar repiqueteaban las gotas de lluvia, lo que le hizo sentir una gran melancolía. «Bueno -pensó-; ¿y si siguiese durmiendo un rato y me olvidase de todas estas locuras? » Pero no era posible, pues Gregorio tenía la costumbre de dormir sobre el lado derecho, y su actual estado no le permitía adoptar tal postura.
-Por más que se esforzara volvía a quedar de espaldas. Intentó en vano esta operación numerosas veces; cerró los ojos para no tener que ver aquella confusa agitación de patas, que no cesó hasta que notó en el costado un dolor leve y punzante, un dolor jamás sentido hasta entonces. - ¡Qué cansada es la profesión que he elegido! -se dijo-.
-Siempre de viaje. Las preocupaciones son mucho mayores cuando se trabaja fuera, por no hablar de las molestias propias de los viajes: estar pendiente de los enlaces de los trenes; la comida mala, irregular; relaciones que cambian constantemente, que nunca llegan a ser verdaderamente cordiales, y en las que no tienen cabida los sentimientos. ¡Al diablo con todo! Sintió en el vientre una ligera picazón. Lentamente, se estiró sobre la espalda en dirección a la cabecera de la cama, para poder alzar mejor la cabeza. Vio que el sitio que le picaba estaba cubierto de extraños untitos blancos. Intentó rascarse con una pata; pero tuvo.
-
-
+	\begin{figure}[h]
+		\centering
+		\begin{overpic}[width=0.6\linewidth, tics=5, grid]{../Latex/Figuras/plot}
+			\put (0,0) {5} % pos xy 0,0 put a 5
+		\end{overpic}
+		
+		\caption{Un grafico importante}
+		\label{fig:plot}
+	\end{figure}
+	
+	
+	\subsection{Tablas}
+	Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto. - ¿Qué me ha ocurrido? No estaba soñando. Su habitación, una habitación normal, aunque muy pequeña, tenía el aspecto habitual.
+	
+	\begin{tabular}{|c|l|r|c|} % c: center; l: left; r:right
+		\hline
+		& 1 & 2 & 3 \\
+		\hline
+		A & hola & hola & hola \\
+		\hline
+		B &  &  &  \\
+		\hline
+	\end{tabular}
+	
+	
+	Podemos hacer una tabla con un poco más de estilo, con ecuaciones dentro y que se adapte el texto. Para el Estado Límite de Servicio, los coeficientes parciales de seguridad a adoptar son los indicados en la Tabla \ref{tab:coeficientes}
+	
+	\begin{table}[h]
+		\centering
+		\caption{Coeficientes parciales de seguridad en ELS}
+		\rowcolors{1}{white}{gray}
+		\begin{tabular}{p{4cm}cc} % parrafo de maximo 4 cm o newline
+			\toprule
+			\textbf{Tipo de acción} & \textbf{Efecto favorable} & \textbf{Efecto desfavorable} \\
+			\midrule
+			Permanente & gG=1 & gg=1 \\
+			
+			Pretensado & 1.10 & 0.90 \\
+			
+			Permanente de valor no constante & 1 & 1 \\
+			
+			Variable & 1 & 0 \\
+			\bottomrule
+		\end{tabular}
+		\label{tab:coeficientes}
+	\end{table}
+	Sintió en el vientre una ligera picazón. Lentamente, se estiró sobre la espalda en dirección a la cabecera de la cama, para poder alzar mejor la cabeza. Vio que el sitio que le picaba estaba cubierto de extraños untitos blancos. Intentó rascarse con una pata; pero tuvo que retirarla inmediatamente, pues el roce le producía escalofríos.
+	El cronograma preliminar se presenta en la Tabla 2
+	
+	\section{Minipáginas}
+	
+	\begin{center}
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=1\linewidth]{example-image-a}
+		\end{minipage}
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=1\linewidth]{example-image-b}
+		\end{minipage}
+	\end{center}
+	\begin{center}
+		\begin{minipage}{0.45\linewidth}
+			\includegraphics[width=1\linewidth]{example-image-c}
+		\end{minipage}
+		\begin{minipage}{0.45\linewidth}
+			Una mañana, tras un sueño intranquilo, Gregorio Samsa se despertó convertido en un monstruoso insecto. Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo.
+			Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto. - ¿Qué me ha ocurrido? 
+		\end{minipage}
+	\end{center}
+	
+	\section{Ecuaciones}
+	
+	La ecuación $ E = m \cdot c^2 $.
+	Tenemos $ f_{yk} $ o sino $ x_{a}^{2} $
+	También tenemos $ \frac{2}{4} $ o sino $ \dfrac{3}{4} $
+	o la raíz $ \sqrt {2} $
+	
+	$$ E = m \cdot c^2 $$ % con doble $ la estamos poniendo en una nueva linea la ecuacion
+	
+	Como vimos en la ecuación \ref{eq:energia}. La \autoref{eq:energia} o sino la ecuación \eqref{eq:energia}
+	
+	\begin{equation} \label{eq:energia} % ecuacion numerada
+		E= m \cdot c^2
+	\end{equation}
+	
+	Otra opción es una ecuación sin numerar pero dentro del entorno de ecuaciones
+	
+	\begin{equation*} % ecuacion sin numerar
+		E= m \cdot c^2
+	\end{equation*}
+	
+	La suma es $ a+b $, la resta es $ a-b $.
+	La multiplicación el $ a \cdot b $ o bien $ a \times b $ 
+		
+	Para poner texto normal en una ecuación:
+	
+	$$ a + b == 5 \text{hola} $$ % Si queremos meter texto normal.
+	
+	Si estoy con angulos puedo tener $ \cos(30) $
+	Para el seno: $ \sin(30) $	
+	
+	La integral:
+	$$ \int_0^L x^2 $$
+	
+	$$ 10<15 \Rightarrow 15 \geq 10 $$
+	
+	\begin{align*}
+		f(x) & = x^2+x^3   \\
+			 & = x^2+2\cdot &
+	\end{align*}
+	
+	Matrices
+	
+	\begin{equation*}
+		A=
+		\begin{pmatrix}  % parentesis curvos
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9 \\
+			\end{pmatrix}, \quad % \quad es un espacio
+	\end{equation*}
+	
+	
+	\begin{equation*}
+		B=
+		\begin{bmatrix} % parentesis rectos
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9 \\
+		\end{bmatrix}, \quad % \quad es un espacio
+	\end{equation*}
+	
+	
+	\begin{equation*}
+		C=
+		\begin{matrix} % sin parentesis 
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9 \\
+		\end{matrix}, \quad % \quad es un espacio
+	\end{equation*}
+	
+		
+	\begin{equation*}
+		D=
+		\begin{Bmatrix} % sin parentesis 
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9 \\
+		\end{Bmatrix}, \quad % \quad es un espacio
+	\end{equation*}
+	
+		\begin{equation*}
+		E=
+		\begin{vmatrix} % sin parentesis 
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9 \\
+		\end{vmatrix}, \quad % \quad es un espacio
+	\end{equation*}
+	
+		\begin{equation*}
+		E=
+		\begin{Vmatrix} % sin parentesis 
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9 \\
+		\end{Vmatrix}, \quad % \quad es un espacio
+	\end{equation*}
+		
+	\section{Conclusiones}
+	Las preocupaciones son mucho mayores cuando se trabaja fuera, por no hablar de las molestias propias de los viajes: estar pendiente de los enlaces de los trenes; la comida mala, irregular; relaciones que cambian constantemente, que nunca llegan a ser verdaderamente cordiales, y en las que no tienen cabida los sentimientos. ¡Al diablo con todo!. Como dijo Argosy Medical Animation, 2007.
+	Una mañana, tras un sueño intranquilo, Gregorio Samsa se despertó convertido en un monstruoso insecto. Estaba echado de espaldas sobre un duro caparazón y, al alzar la cabeza, vio su vientre convexo y oscuro, surcado por curvadas callosidades, sobre el que casi no se aguantaba la colcha, que estaba a punto de escurrirse hasta el suelo. También lo dijo (Hegna \& Langmyhr, 2019; Iesan, 1996; Kime \& Charette, 2015)
+	
+	Numerosas patas, penosamente delgadas en comparación con el grosor normal de sus piernas, se agitaban sin concierto. - ¿Qué me ha ocurrido? No estaba soñando. Su habitación, una habitación normal, aunque muy pequeña, tenía el aspecto habitual.Y esto lo dijo Adelstein y Kuguel (2011).
+	Sobre la mesa había desparramado un muestrario de paños - Samsa era viajante de comercio-, y de la pared colgaba una estampa recientemente recortada de una revista ilus trada y puesta en un marco dorado. La estampa mostraba a una mujer tocada con un gorro de pieles, envuelta en una estola también de pieles, y que, muy erguida, esgrimía un amplio manguito, asimismo de piel, que ocultaba todo su antebrazo.
+	Gregorio miró hacia la ventana; estaba nublado, y sobre el cinc del alféizar repiqueteaban las gotas de lluvia, lo que le hizo sentir una gran melancolía. «Bueno -pensó-; ¿y si siguiese durmiendo un rato y me olvidase de todas estas locuras? » Pero no era posible, pues Gregorio tenía la costumbre de dormir sobre el lado derecho, y su actual estado no le permitía adoptar tal postura.
+	Por más que se esforzara volvía a quedar de espaldas. Intentó en vano esta operación numerosas veces; cerró los ojos para no tener que ver aquella confusa agitación de patas, que no cesó hasta que notó en el costado un dolor leve y punzante, un dolor jamás sentido hasta entonces. - ¡Qué cansada es la profesión que he elegido! -se dijo-.
+	Siempre de viaje. Las preocupaciones son mucho mayores cuando se trabaja fuera, por no hablar de las molestias propias de los viajes: estar pendiente de los enlaces de los trenes; la comida mala, irregular; relaciones que cambian constantemente, que nunca llegan a ser verdaderamente cordiales, y en las que no tienen cabida los sentimientos. ¡Al diablo con todo! Sintió en el vientre una ligera picazón. Lentamente, se estiró sobre la espalda en dirección a la cabecera de la cama, para poder alzar mejor la cabeza. Vio que el sitio que le picaba estaba cubierto de extraños untitos blancos. Intentó rascarse con una pata; pero tuvo.
+	
+	
 \end{document}

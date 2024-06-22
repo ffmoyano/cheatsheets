@@ -54,6 +54,8 @@ tab - cambiar entre edit mode y object mode
 
 w - cambia entre los distintos modos de seleccion
 
+ctrl +tab - menu de modos de edicion
+
 EDIT MODE
 
 1 - select vertices
@@ -69,3 +71,9 @@ o - togglear edicion proporcional
 a - seleccionar todos los nodos del objeto editado
 
 shift + s - abrir menu de ajuste (snapping menu)
+
+
+SCULPT MODE 
+
+f - seleccionar tamaño pincel
+

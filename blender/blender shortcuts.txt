@@ -64,6 +64,8 @@ EDIT MODE
 
 alt + click - loop select, selecciona todos los vertices/lines/faces conectados horizontalmente o verticalmente al nodo seleccionado
 
+alt + q - cambia el objeto activo a aquel sobre el que el raton esta haciendo hovering (no hace nada si el raton no está sobre un objeto)
+
 select node y luego ctrl + click en otro nodo - shortest path selection, selecciona el camino mas corto de nodos necesario para llegar al primer nodo
 
 o - togglear edicion proporcional

@@ -37,6 +37,7 @@ shift + right click - mover el cursor 3d (donde se originan nuevos objetos)
 shift + c - devolver el cursor 3d al origen del mundo (0,0,0) y mueve la vista a dicho origen
 
 shift + d - duplica el objeto seleccionado
+alt + d - duplica el objeto linkeando la copia al original, de tal forma que si se edita uno se altera el otro
 
 f2 - renombrar el objeto seleccionado (o el ultimo que estuvo seleccionado)
 
@@ -49,6 +50,7 @@ shift + click izquierdo - seleccionar algo sin perder la seleccion anterior
 select multiple + ctrl + j - unir los objetos seleccionados
 
 z - abre el menu de modos de shading
+alt + z - togglea entre vision de ratos X
 
 tab - cambiar entre edit mode y object mode
 

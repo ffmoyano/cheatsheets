@@ -76,6 +76,13 @@ a - seleccionar todos los nodos del objeto editado
 
 shift + s - abrir menu de ajuste (snapping menu)
 
+ctrl + j - unir dentro de un objeto todos los objetos seleccionados
+
+l - dentro de un objeto, seleccionar el elemento sobre el que se está haciendo hover
+
+e - extruir
+
+i - inset faces
 
 SCULPT MODE 
 

@@ -70,7 +70,25 @@ let a = 10;
 let greaterThan5 = a > 5 ? true : false;   // true;
 ```
 
+### Optional chaining
+- Se escribe con (?.) y sirve para acceder a una propiedad o función.
+- Si la propiedad o función son nulas o undefined devolverá un undefined en lugar de lanzar un error.
 
+```javascript
+const adventurer = {
+  name: "Alice",
+  cat: {
+    name: "Dinah",
+  },
+};
+
+const dogName = adventurer.dog?.name;
+console.log(dogName);
+// Expected output: undefined
+
+console.log(adventurer.someNonExistentMethod?.());
+// Expected output: undefined
+```
 
 ### Operadores de comparación
 

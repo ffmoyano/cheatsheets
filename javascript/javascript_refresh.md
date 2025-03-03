@@ -96,8 +96,8 @@ Los operadores de comparación tienen la particularidad de devolver el último v
 
 ```javascript
 
-true && 1 = 1  // 1 es el ultimo valor comparado asi que lo devuelve
-0 && true = 0  // como 0 es igual a false no comprueba más, y lo devuelve.
+true && 1      // 1 es el ultimo valor comparado asi que lo devuelve
+0 && true      // como 0 es igual a false no comprueba más, y lo devuelve.
 1 && "hello"   // devuelve "hello"
 
 const port = process.env.PORT || 3000	// si PORT existe lo devuelve, y sino 														//	devuelve 3000

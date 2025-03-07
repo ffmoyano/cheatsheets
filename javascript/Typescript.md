@@ -104,6 +104,11 @@ function sumar(a: number, b: number): number {
   return a + b;
 }
 
+// si no devuelve nada se puede poner void en el retorno de la firma
+function saludar(): void {
+  console.log("hola");
+}
+
 // funcion de flecha con retorno implícito
 const dividir = (a: number, b: number) => a / b;
 
@@ -136,6 +141,45 @@ class Persona {
     console.log(`Hola, mi nombre es ${this.nombre}.`);
   } 
 }
+
+// HERENCIA Y ENCAPSULAMIENTO (PROPIEDADES PRIVADAS Y GET SET)
+// Clase base
+class Animal {
+    private name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    makeSound(): void {
+        console.log(`${this.name} hace un sonido.`);
+    }
+  	getName(): string {
+      return this.name;
+    }
+  	setName(name: string) {
+      this.name = name;
+    }
+}
+
+// Clase derivada
+class Dog extends Animal {
+    constructor(name: string) {
+        super(name); // Llama al constructor de la clase base
+    }
+  	
+
+    makeSound(): void {
+        console.log(`${this.name} ladra.`);
+    }
+}
+
+// Uso de las clases
+const myDog = new Dog('Rex');
+myDog.makeSound(); // Output: Rex ladra.
+myDog.getName();  // Rex
+myDog.setName("Asclepius");
+myDog.getName();  // Asclepius
 ```
 
 ### Interfaces
@@ -188,10 +232,11 @@ class Aventurero implements Persona {
 // Type basico
 type Numero = number;
 
-// Type basico objeto literal
+// Type basico objeto
 type Personal = {
   nombre: string;
   edad: number;
+  aptitudes: string[];
 }
 
 // Type con union types
@@ -215,5 +260,64 @@ type Persona2 = {
   edad: number;
   saludar(): void;
 }
+```
+
+### Any
+
+```typescript 
+// we can use the any type to opt out of the type checking and allow the value to pass through the compile-time check.
+let result: any;
+
+result = 1;
+console.log(result);
+
+result = 'Hello';
+console.log(result);
+
+result = [1, 2, 3];
+const total = result.reduce((a: number, b: number) => a + b, 0);
+console.log(total);
+
+let whatever; // a variable declared without type and without value assigned will be inferred as of type any
+
+```
+
+### Genéricos
+
+```typescript
+// Function: accept parameter of any type and return param of same type 
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let output1 = identity<string>("Hello, TypeScript!");
+let output2 = identity<number>(42);
+
+// Interface
+interface Pair<T, U> {
+    first: T;
+    second: U;
+}
+
+let pair: Pair<string, number> = { first: "Age", second: 30 };
+
+// class
+class Box<T> {
+    contents: T;
+
+    constructor(contents: T) {
+        this.contents = contents;
+    }
+
+    getContents(): T {
+        return this.contents;
+    }
+}
+
+let stringBox = new Box<string>("A string");
+let numberBox = new Box<number>(123);
+
+
+
 ```
 

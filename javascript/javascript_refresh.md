@@ -58,6 +58,7 @@ console.log(`La suma de a + b es ${a + b}`);
 
 ```javascript
 let a = 5;
+let b = undefined;
 
 let c = a ?? 12;			// 5
 let d = b ?? 8;				// 8

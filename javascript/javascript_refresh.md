@@ -54,7 +54,7 @@ console.log(`La suma de a + b es ${a + b}`);
 ### Nullish coalescing
 
 - Se escribe ??
-- Devuelve el operador de la izquierda si existe, o el de la derecha si  el de la izquierda es null o undefined.
+- Devuelve el operador de la izquierda siempre y cuando no sea null o undefined, o el de la derecha si  el de la izquierda es null o undefined.
 
 ```javascript
 let a = 5;
